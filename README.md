@@ -30,3 +30,15 @@ If you're using something other than VS, I'll assume you know what your doing. I
 5. Click "Clone"
 
 **Tada**You have a local copy of the repo
+
+## Keep `main` Clean, Work in Your Branch!
+
++ Don't commit directly to main, unless editing a markdown file
+  + Ideally just don't commit to main. We have other ways of keeping people up to date.
++ When you're updating something
+  + Make branch
+  + Make your changes in that branch
+  + Commit to that branch
+  + Merge the branch back up and delete the branch
++ Documentation!
+  + Fill out your commit and pull comments
