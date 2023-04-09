@@ -14,7 +14,7 @@ Pete's Pizzaria GUI application
   + Price
   + Image
     + URL of the image file for the GUI
-  + Could be XML, INI, etc
+  + Could be JSON, XML, INI, etc
 + Create data
   + Various presets, toppings, etc with all their information
   + Use the format chosen above
