@@ -10,5 +10,16 @@
 	+ ***NOTE*** When performing the following steps, do not remove any directories that have been added by others who may have the library stored in a different directory
 6. Under Configuration Properties>C/C++, add the include directory to Additional Include Directories (e.g. d:\\source\\libraries\\SFML-2.5.1\\include)
 7. Under Linker>General, add the library directory to Additional Library Directories (e.g. d:\\source\\libraries\\SFML-2.5.1\\lib)
+8. Locate the .dll files in the library (e.g. d:\\source\\libraries\\SFML-2.5.1\\bin)
+9. Copy the following .dll files to the Release folder in the project (e.g. D:\\source\\repos\\SDEV230_Project\\Release)
+	+ If the release folder does not exist yet, create it
+	+ sfml-graphics-2.dll
+	+ sfml-window-2.dll
+	+ sfml-system-2.dll
+9. Copy the following .dll files to the Debug folder in the project (e.g. D:\\source\\repos\\SDEV230_Project\\Debug)
+	+ If the debug folder does not exist yet, create it
+	+ sfml-graphics-2-d.dll
+	+ sfml-window-2-d.dll
+	+ sfml-system-2-d.dll
 
-That's it! The dll files should already be in the correct directory, and all the rest of the links and settings should work fine.
+That should be everything! If you have issues getting it to compile and run, contact UnusualParticle
