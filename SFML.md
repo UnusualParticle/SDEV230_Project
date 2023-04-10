@@ -2,6 +2,8 @@
 
 ## Setting up SFML
 
+Official instructions can be found here: https://www.sfml-dev.org/tutorials/2.5/start-vc.php
+
 1. Goto https://www.sfml-dev.org/download/sfml/2.5.1/
 2. Download the Visual C++ 15 (2017) - 32-bit option
 3. Unzip it to wherever is convenient (I chose d:\\source\\libraries\\SFML-2.5.1)
