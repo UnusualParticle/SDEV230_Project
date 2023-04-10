@@ -21,5 +21,7 @@
 	+ sfml-graphics-2-d.dll
 	+ sfml-window-2-d.dll
 	+ sfml-system-2-d.dll
+10. *One more thing:* When you compile, ensure your solution platform is set to x86, not x64.
+	+ If you specifically want x64 compatibility, that can be arranged, it will just be a lot of extra steps.
 
-That should be everything! If you have issues getting it to compile and run, contact UnusualParticle
+That should be everything! If you have issues getting it to compile and run, contact UnusualParticle.
