@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "SFML_test.h"
+#include "SFML/SFML_test.h"
 
 int main()
 {
