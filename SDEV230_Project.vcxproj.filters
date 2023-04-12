@@ -18,21 +18,28 @@
     <None Include="README.md">
       <Filter>Resource Files</Filter>
     </None>
-    <None Include="SFML.md">
-      <Filter>Resource Files</Filter>
-    </None>
+    <None Include="SFML\SFML.md" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SFML_test.cpp">
+    <ClCompile Include="SFML\SFML_test.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SFML\UserInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SFML_test.h">
+    <ClInclude Include="SFML\SFML_test.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SFML\UserInterface.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Data\arial.ttf" />
   </ItemGroup>
 </Project>

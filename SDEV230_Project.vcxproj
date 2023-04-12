@@ -146,14 +146,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="SFML.md" />
+    <None Include="SFML\SFML.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SFML_test.cpp" />
+    <ClCompile Include="SFML\UserInterface.cpp" />
+    <ClCompile Include="SFML\SFML_test.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SFML_test.h" />
+    <ClInclude Include="SFML\UserInterface.h" />
+    <ClInclude Include="SFML\SFML_test.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Font Include="Data\arial.ttf" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
