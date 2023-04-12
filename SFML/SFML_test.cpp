@@ -17,6 +17,7 @@ void SFML_TEST()
         {
             if (event.type == sf::Event::Closed)
                 window.close();
+            
         }
 
         window.clear();

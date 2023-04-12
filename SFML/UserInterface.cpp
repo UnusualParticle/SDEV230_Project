@@ -4,6 +4,11 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
+sf::Vector2f std::floor(sf::Vector2f v)
+{
+	return { std::floor(v.x), std::floor(v.y) };
+}
+
 namespace ui
 {
 	namespace Settings
@@ -12,6 +17,17 @@ namespace ui
 		{
 			prevMousePos = curMousePos;
 			curMousePos = Vector{ sf::Mouse::getPosition(window) };
+		}
+		void addStyle(const ElementStyle& style, const std::string_view& stylename)
+		{
+			Styles.emplace( stylename, style);
+		}
+		const ElementStyle& getStyle(const std::string_view& stylename)
+		{
+			auto pair{ Styles.find(stylename.data()) };
+			if (pair == Styles.end())
+				return style;
+			return pair->second;
 		}
 	}
 
@@ -164,7 +180,6 @@ namespace ui
 
 		// apply mask
 		m_state &= mask;
-
 
 		setStyle(getStyle());
 	}
@@ -483,17 +498,72 @@ namespace ui
 	{
 		m_body.setTexture(t);
 	}
+
+	namespace TEST
+	{
+		void windowSetup(sf::Window& window)
+		{
+			unsigned int width{1280};
+			unsigned int height{720};
+			std::string title{ "UI Elements work!" };
+
+			window.create({ width, height }, title);
+			ui::Settings::windowSize = sf::Vector2f(window.getSize());
+		}
+		void initialize(sf::RenderWindow& window)
+		{
+			ui::Settings::font.loadFromFile("data/arial.ttf");
+
+			auto& w{ ui::Settings::windowSize };
+			ui::Element loading{ {0,0},{w.x / 4,w.y / 4},"Loading..." };
+			window.clear();
+			window.draw(loading);
+		}
+		ElementStyle makeStyle()
+		{
+			ElementStyle mystyle{};
+
+			mystyle.hover.fillColor = sf::Color{ 100,100,100 };
+			mystyle.click.fillColor = sf::Color{ 50,50,50 };
+			mystyle.select.outlineColor = sf::Color{ 0,0,255 };
+			mystyle.select.outlineThickness = -3.f;
+			mystyle.format |= Formats::fitText;
+			mystyle.select.padding = Vector{10,10};
+
+			return mystyle;
+		}
+		void RunTest()
+		{
+			sf::RenderWindow window;
+			windowSetup(window);
+			initialize(window);
+
+			ElementStyle mystyle{ makeStyle()};
+			Element element({100,100}, {100,100}, "Hello World!", mystyle);
+			element.resetSize();
+			bool exit{};
+			while (!exit)
+			{
+				sf::Event event{};
+				while (window.pollEvent(event))
+				{
+					bool mouseEvent{ isMouseEvent(window, event) };
+					if (event.type == sf::Event::Closed || onEscapePress())
+						exit = true;
+					else if (mouseEvent)
+						element.pollEvent(event);
+				}
+
+				window.clear();
+				window.draw(element);
+				window.display();
+			}
+
+			window.close();
+		}
+	}
 }
 
-sf::Vector2f std::floor(sf::Vector2f v)
-{
-	return { std::floor(v.x), std::floor(v.y) };
-}
-
-bool isEnterPressed()
-{
-	return sf::Keyboard::isKeyPressed(sf::Keyboard::Enter);
-}
 bool onEscapePress()
 {
 	static bool previous{};
@@ -520,15 +590,4 @@ bool isMouseEvent(const sf::Window& window, const sf::Event& event)
 		return true;
 	}
 	return false;
-}
-e_Menu isMenuKey()
-{
-	using K = sf::Keyboard;
-	if (K::isKeyPressed(K::Escape))
-		return e_Menu::Settings;
-	if (K::isKeyPressed(K::Tab))
-		return e_Menu::Director;
-	if (K::isKeyPressed(K::I))
-		return e_Menu::Inventory;
-	return e_Menu::total;
 }

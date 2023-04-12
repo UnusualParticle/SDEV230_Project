@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <array>
+#include <map>
 #include <memory>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
@@ -20,6 +20,7 @@ namespace ui
 	using Vector = sf::Vector2f;
 	using State = int;
 	using Format = int;
+
 	enum States
 	{
 		none = 0,
@@ -65,23 +66,6 @@ namespace ui
 		ElementStyle(const ElementStyle&);
 	};
 
-	enum e_Styles
-	{
-		plainText,
-		messageText,
-		errorText,
-		button,
-		input,
-		enemy,
-		healthbackground,
-		health,
-		shield,
-		card,
-		buff,
-		debuff,
-		total
-	};
-	inline std::array<ElementStyle, e_Styles::total> Styles;
 	namespace Settings
 	{
 		inline sf::Font font{};
@@ -92,6 +76,10 @@ namespace ui
 		inline Vector windowSize{};
 
 		void updateMouse(const sf::Window&);
+
+		inline std::map<std::string, ElementStyle> Styles;
+		void addStyle(const ElementStyle& style, const std::string_view& stylename);
+		const ElementStyle& getStyle(const std::string_view&);
 	}
 
 	class Element : public sf::Drawable
@@ -109,7 +97,7 @@ namespace ui
 		State m_lastState{ States::reserved };
 	public:
 		Element() = default;
-		Element(const Vector& pos, const Vector& size, const sf::String & = "", const ElementStyle & = Settings::style, const State state = Settings::stateDefault);
+		Element(const Vector& pos, const Vector& size, const sf::String & = "", const ElementStyle& = Settings::style, const State state = Settings::stateDefault);
 		~Element() = default;
 
 		void draw(sf::RenderTarget&, sf::RenderStates) const;
@@ -171,6 +159,11 @@ namespace ui
 
 		void setTexture(sf::Texture*);
 	};
+
+	namespace TEST
+	{
+		void RunTest();
+	}
 }
 
 // Check if the enter key is currently pressed
@@ -179,13 +172,3 @@ bool isEnterPressed();
 bool onEscapePress();
 // Check if the last event was a mouse event and updates ui::Settings mouse positions
 bool isMouseEvent(const sf::Window& window, const sf::Event& event);
-// Return values for isMenuKey()
-enum class e_Menu
-{
-	Settings,
-	Director,
-	Inventory,
-	total
-};
-// Check if one of the menu keys is currently pressed
-e_Menu isMenuKey();

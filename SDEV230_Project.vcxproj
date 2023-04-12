@@ -157,6 +157,9 @@
     <ClInclude Include="SFML\UserInterface.h" />
     <ClInclude Include="SFML\SFML_test.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Font Include="Data\arial.ttf" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
