@@ -30,6 +30,12 @@
     <ClCompile Include="SFML\UserInterface.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="SFML\UI_Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SFML\StyleLoaders.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SFML\SFML_test.h">
@@ -38,8 +44,18 @@
     <ClInclude Include="SFML\UserInterface.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="SFML\UI_Menu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SFML\StyleLoaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Data\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\style_product.json" />
+    <Text Include="Data\style_menu.json" />
   </ItemGroup>
 </Project>

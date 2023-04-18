@@ -82,7 +82,13 @@ namespace ui
 		const ElementStyle& getStyle(const std::string_view&);
 	}
 
-	class Element : public sf::Drawable
+	class Element_Base : public sf::Drawable
+	{
+	public:
+		virtual void pollEvent(const sf::Event&) = 0;
+	};
+
+	class Element : public Element_Base
 	{
 	public:
 	private:
