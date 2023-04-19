@@ -8,9 +8,9 @@ namespace ui
 	class Product : public Element_Base
 	{
 	private:
-		Element m_item{};
-		Element m_add{};
-		Element m_remove{};
+		Element m_item{ {},{} };
+		Element m_add{ {},{} };
+		Element m_remove{ {},{} };
 	public:
 		Product() = default;
 		~Product() = default;
@@ -33,9 +33,9 @@ namespace ui
 	class Menu : public Element_Base
 	{
 	private:
-		Element m_background{};
-		Element m_title{};
-		Element m_back{};
+		Element m_background{ {},{} };
+		Element m_title{ {},{} };
+		Element m_back{ {},{} };
 		ProdList_t m_items{};
 	public:
 		Menu() = default;
@@ -44,6 +44,9 @@ namespace ui
 		void draw(sf::RenderTarget&, sf::RenderStates) const;
 		void pollEvent(const sf::Event&);
 		void SetStyles(const ElementStyle* backgroundStyle, const ElementStyle* titleStyle, const ElementStyle* backStyle);
+
+		ProdList_t::const_iterator begin() const;
+		ProdList_t::const_iterator end() const;
 
 		void AddProduct(const Product&);
 		bool BackClicked() const;

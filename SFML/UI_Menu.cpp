@@ -80,6 +80,16 @@ namespace ui
 		for (auto& i : m_items)
 			i.pollEvent(event);
 	}
+
+	ProdList_t::const_iterator Menu::begin() const
+	{
+		return m_items.begin();
+	}
+	ProdList_t::const_iterator Menu::end() const
+	{
+		return m_items.end();
+	}
+
 	void Menu::AddProduct(const Product& product)
 	{
 		m_items.push_back(product);
@@ -146,7 +156,6 @@ namespace ui
 			mystyle.select.outlineColor = sf::Color{ 100,100,255 };
 			mystyle.select.fillColor = sf::Color::Black;
 			mystyle.select.outlineThickness = -3.f;
-			//mystyle.format |= Formats::fitText;
 			mystyle.select.padding = Vector{ 10,10 };
 
 			return mystyle;
@@ -187,6 +196,13 @@ namespace ui
 					{
 						element.pollEvent(event);
 						myMenu.pollEvent(event);
+					}
+					for (const auto& p : myMenu)
+					{
+						if (p.AddClicked())
+							int lmao{};
+						if (p.RemoveClicked())
+							int rofl{};
 					}
 				}
 
