@@ -28,16 +28,34 @@ namespace ui
 			v = Vector{ Settings::windowSize.x,Settings::windowSize.y / 10 };
 
 		m_item.setSize(v);
+		Vector v_button{ v.y / 2,v.y / 2 };
+		m_add.setSize(v_button);
+		m_remove.setSize(v_button);
 
-		m_add.setSize({v.x/2,v.y/2});
-		m_add.setPosition({ v.x - m_add.getSize().x, v.y });
-		
-		m_remove.setSize({ v.x / 2,v.y / 2 });
-		m_remove.setPosition({ v.x - m_remove.getSize().x, v.y + m_remove.getSize().y });
+		setPosition(m_item.getPosition());
 	}
 	Vector Product::getSize() const
 	{
 		return m_item.getSize();
+	}
+	void Product::setPosition(Vector v)
+	{
+		m_item.setPosition(v);
+
+		Vector v_button{
+			m_item.getPosition().x + m_item.getSize().x - m_add.getSize().x,
+			m_item.getPosition().y
+		};
+		m_add.setPosition({ v_button.x, v_button.y });
+		m_remove.setPosition({ v_button.x, v_button.y + m_remove.getSize().y });
+	}
+	Vector Product::getPosition() const
+	{
+		return m_item.getPosition();
+	}
+	void Product::setName(const char* str)
+	{
+		m_item.setString(str);
 	}
 
 	void Product::SetStyles(const ElementStyle* itemStyle, const ElementStyle* addStyle, const ElementStyle* removeStyle)
@@ -59,10 +77,25 @@ namespace ui
 	{
 		m_back.pollEvent(event);
 		m_title.pollEvent(event);
+		for (auto& i : m_items)
+			i.pollEvent(event);
 	}
 	void Menu::AddProduct(const Product& product)
 	{
 		m_items.push_back(product);
+
+		Vector pos{};
+		auto& p{ m_items.back() };
+		if (m_items.size() > 1)
+		{
+			auto prev{ ++m_items.rbegin() };
+			pos = prev->getPosition();
+			pos.y += prev->getSize().y;
+		}
+		else
+			pos = { 0,Settings::windowSize.y / 10 };
+		p.setSize();
+		p.setPosition(pos);
 	}
 
 	void Menu::SetStyles(const ElementStyle* backgroundStyle, const ElementStyle* titleStyle, const ElementStyle* backStyle)
@@ -113,7 +146,7 @@ namespace ui
 			mystyle.select.outlineColor = sf::Color{ 100,100,255 };
 			mystyle.select.fillColor = sf::Color::Black;
 			mystyle.select.outlineThickness = -3.f;
-			mystyle.format |= Formats::fitText;
+			//mystyle.format |= Formats::fitText;
 			mystyle.select.padding = Vector{ 10,10 };
 
 			return mystyle;
@@ -129,6 +162,14 @@ namespace ui
 			//myMenu.Resize();
 			myMenu.SetStyles(&mystyle, &mystyle, &mystyle);
 			myMenu.SetTitle("Pete's Pizzaria");
+
+			for (size_t i{}; i < 4; ++i)
+			{
+				Product myProduct{};
+				myProduct.setName("Pizza Pizza");
+				myProduct.SetStyles(&mystyle, &mystyle, &mystyle);
+				myMenu.AddProduct(myProduct);
+			}
 			myMenu.Resize();
 
 			Element element({ 100,100 }, { 100,100 }, "Hello World!", &mystyle);

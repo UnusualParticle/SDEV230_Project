@@ -23,6 +23,9 @@ namespace ui
 		bool RemoveClicked() const;
 		void setSize(Vector = {});
 		Vector getSize() const;
+		void setPosition(Vector);
+		Vector getPosition() const;
+		void setName(const char*);
 	};
 
 	using ProdList_t = std::vector<Product>;

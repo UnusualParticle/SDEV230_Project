@@ -271,9 +271,10 @@ namespace ui
 	// Transform
 	void Element::setSize(const Vector& size)
 	{
-		float myWidth = m_text.getGlobalBounds().width + getStyle().padding.x * 2;
-		if (isTextFit() && myWidth > size.x)
-			m_body.setSize({ myWidth, size.y });
+		m_minWidth = size.x;
+		float innerWidth = m_text.getGlobalBounds().width + getStyle().padding.x * 2;
+		if (isTextFit() && innerWidth > size.x)
+			m_body.setSize({ innerWidth, size.y });
 		else
 			m_body.setSize(size);
 		m_bound = m_body.getGlobalBounds();
