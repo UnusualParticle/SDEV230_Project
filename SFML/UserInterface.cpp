@@ -37,8 +37,8 @@ namespace ui
 		*this = style;
 	}
 
-	Element::Element(const Vector& pos, const Vector& size, const sf::String& string, const ElementStyle& style, const State state)
-		: m_text(string, Settings::font, style.regular.characterSize), m_style(&style), m_minWidth(size.x)
+	Element::Element(const Vector& pos, const Vector& size, const sf::String& string, const ElementStyle* style, const State state)
+		: m_text(string, Settings::font, style->regular.characterSize), m_style(style), m_minWidth(size.x)
 	{
 		setSize(size);
 		setPosition(pos);
@@ -231,9 +231,9 @@ namespace ui
 	}
 
 	// Style
-	void Element::assignStyle(const ElementStyle& style)
+	void Element::assignStyle(const ElementStyle* style)
 	{
-		m_style = &style;
+		m_style = style;
 		setStyle(getStyle());
 	}
 	void Element::setStyle(const StateStyle& style)
@@ -499,7 +499,7 @@ namespace ui
 		m_body.setTexture(t);
 	}
 
-	namespace TEST
+	namespace TEST_UI
 	{
 		void windowSetup(sf::Window& window)
 		{
@@ -525,7 +525,7 @@ namespace ui
 
 			mystyle.hover.fillColor = sf::Color{ 100,100,100 };
 			mystyle.click.fillColor = sf::Color{ 50,50,50 };
-			mystyle.select.outlineColor = sf::Color{ 0,0,255 };
+			mystyle.select.outlineColor = sf::Color{ 100,100,255 };
 			mystyle.select.outlineThickness = -3.f;
 			mystyle.format |= Formats::fitText;
 			mystyle.select.padding = Vector{10,10};
@@ -539,7 +539,7 @@ namespace ui
 			initialize(window);
 
 			ElementStyle mystyle{ makeStyle()};
-			Element element({100,100}, {100,100}, "Hello World!", mystyle);
+			Element element({100,100}, {100,100}, "Hello World!", &mystyle);
 			element.resetSize();
 			bool exit{};
 			while (!exit)

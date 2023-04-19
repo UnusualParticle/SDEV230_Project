@@ -5,35 +5,32 @@
 
 namespace ui
 {
-	class Product : Element_Base
+	class Product : public Element_Base
 	{
 	private:
-		static ElementStyle s_item;
-		static ElementStyle s_add;
-		static ElementStyle s_remove;
-
-		Element m_item{ {},{},{}, s_item };
-		Element m_add{ {},{},{}, s_add };
-		Element m_remove{ {},{},{}, s_remove };
+		Element m_item{};
+		Element m_add{};
+		Element m_remove{};
 	public:
 		Product() = default;
 		~Product() = default;
 
 		void draw(sf::RenderTarget&, sf::RenderStates) const;
 		void pollEvent(const sf::Event&);
-		static void SetStyles(const ElementStyle& itemStyle, const ElementStyle& addStyle, const ElementStyle& removeStyle);
+		void SetStyles(const ElementStyle* itemStyle, const ElementStyle* addStyle, const ElementStyle* removeStyle);
 
 		bool AddClicked() const;
 		bool RemoveClicked() const;
+		void setSize(Vector = {});
+		Vector getSize() const;
 	};
+
 	using ProdList_t = std::vector<Product>;
 
-	class Menu : Element_Base
+	class Menu : public Element_Base
 	{
 	private:
-		static ElementStyle s_title;
-		static ElementStyle s_back;
-
+		Element m_background{};
 		Element m_title{};
 		Element m_back{};
 		ProdList_t m_items{};
@@ -43,9 +40,17 @@ namespace ui
 
 		void draw(sf::RenderTarget&, sf::RenderStates) const;
 		void pollEvent(const sf::Event&);
-		static void SetStyles(const ElementStyle& titleStyle, const ElementStyle& backStyle);
+		void SetStyles(const ElementStyle* backgroundStyle, const ElementStyle* titleStyle, const ElementStyle* backStyle);
 
 		void AddProduct(const Product&);
 		bool BackClicked() const;
+
+		void Resize();
+		void SetTitle(const char*);
 	};
+
+	namespace TEST_MENU
+	{
+		void RunTest();
+	}
 }

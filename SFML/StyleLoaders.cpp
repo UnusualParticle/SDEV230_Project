@@ -21,6 +21,10 @@ public:
 	{
 		return {};
 	}
+	float getfloat()
+	{
+		return {};
+	}
 };
 std::istream& operator>>(std::istream& stream, _json& j)
 {
@@ -45,7 +49,7 @@ void LoadStateStyle(ui::StateStyle& style, _json& j_obj, ui::StateStyle& backup 
 		style.outlineColor = backup.outlineColor;
 
 	if (j_obj.has("text-color"))
-		style.outlineThickness = j_obj["border-size"].getint();
+		style.outlineThickness = j_obj["border-size"].getfloat();
 	else
 		style.outlineThickness = backup.outlineThickness;
 }
@@ -68,11 +72,11 @@ void LoadProductStyles()
 	ui::ElementStyle add{};
 	ui::ElementStyle remove{};
 
-	LoadStyle(background, j_obj);
-	LoadStyle(add, j_obj);
-	LoadStyle(remove, j_obj);
+	LoadStyle(background, j_obj["background"]);
+	LoadStyle(add, j_obj["add"]);
+	LoadStyle(remove, j_obj["remove"]);
 
-	ui::Product::SetStyles(background, add, remove);
+	//ui::Product::SetStyles(&background, &add, &remove);
 }
 void LoadMenuStyles()
 {
@@ -81,13 +85,15 @@ void LoadMenuStyles()
 	file >> j_obj;
 	file.close();
 
+	ui::ElementStyle background{};
 	ui::ElementStyle title{};
 	ui::ElementStyle back{};
 
-	LoadStyle(title, j_obj);
-	LoadStyle(back, j_obj);
+	LoadStyle(background, j_obj["background"]);
+	LoadStyle(title, j_obj["add"]);
+	LoadStyle(back, j_obj["remove"]);
 
-	ui::Menu::SetStyles(title, back);
+	//ui::Menu::SetStyles(&background, &title, &back);
 }
 
 void StyleLoader()
