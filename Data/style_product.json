@@ -1,0 +1,38 @@
+{
+  "background": {
+    "default": {
+      "bg-color": "0xffffff",
+      "text-color": "0x000000",
+      "border-color": "0xdddddd",
+      "border-size": 0
+    }
+  },
+  "add": {
+    "default": {
+      "bg-color": "0xffffff",
+      "text-color": "0x000000",
+      "border-color": "0xdddddd",
+      "border-size": 0
+    },
+    "hover": {
+      "bg-color": "0xcccccc"
+    },
+    "click": {
+      "bg-color": "0x999999"
+    }
+  },
+  "remove": {
+    "default": {
+      "bg-color": "0xffffff",
+      "text-color": "0x000000",
+      "border-color": "0xdddddd",
+      "border-size": 0
+    },
+    "hover": {
+      "bg-color": "0xcccccc"
+    },
+    "click": {
+      "bg-color": "0x999999"
+    }
+  }
+}

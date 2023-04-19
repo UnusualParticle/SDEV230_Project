@@ -149,16 +149,24 @@
     <None Include="SFML\SFML.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="SFML\StyleLoaders.cpp" />
+    <ClCompile Include="SFML\UI_Menu.cpp" />
     <ClCompile Include="SFML\UserInterface.cpp" />
     <ClCompile Include="SFML\SFML_test.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="SFML\StyleLoaders.h" />
+    <ClInclude Include="SFML\UI_Menu.h" />
     <ClInclude Include="SFML\UserInterface.h" />
     <ClInclude Include="SFML\SFML_test.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Data\arial.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data\style_product.json" />
+    <Text Include="Data\style_menu.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -82,7 +82,13 @@ namespace ui
 		const ElementStyle& getStyle(const std::string_view&);
 	}
 
-	class Element : public sf::Drawable
+	class Element_Base : public sf::Drawable
+	{
+	public:
+		virtual void pollEvent(const sf::Event&) = 0;
+	};
+
+	class Element : public Element_Base
 	{
 	public:
 	private:
@@ -97,7 +103,7 @@ namespace ui
 		State m_lastState{ States::reserved };
 	public:
 		Element() = default;
-		Element(const Vector& pos, const Vector& size, const sf::String & = "", const ElementStyle& = Settings::style, const State state = Settings::stateDefault);
+		Element(const Vector& pos, const Vector& size, const sf::String & = "", const ElementStyle* = &Settings::style, const State state = Settings::stateDefault);
 		~Element() = default;
 
 		void draw(sf::RenderTarget&, sf::RenderStates) const;
@@ -124,7 +130,7 @@ namespace ui
 		State getPrimaryState() const;
 
 		// Style
-		void assignStyle(const ElementStyle&);
+		void assignStyle(const ElementStyle*);
 		void setStyle(const StateStyle&);
 		const StateStyle& getStyle() const;
 
@@ -160,7 +166,7 @@ namespace ui
 		void setTexture(sf::Texture*);
 	};
 
-	namespace TEST
+	namespace TEST_UI
 	{
 		void RunTest();
 	}
