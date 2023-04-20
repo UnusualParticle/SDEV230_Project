@@ -5,6 +5,7 @@
 #include <map>
 #include <string>
 
+// Styles.cpp is not implimented yet
 // TEMPORARY
 class _json
 {
@@ -63,7 +64,7 @@ namespace style
 		LoadStateStyle(style.select, j_obj["click"], style.regular);
 	}
 
-	std::pair<StyleMap_t::iterator, bool> LoadStyle(const string& key, string& filename)
+	std::pair<StyleMap_t::iterator, bool> LoadStyle(const string& key, const string& filename)
 	{
 		std::ifstream file{ filename };
 		if (!file.is_open())

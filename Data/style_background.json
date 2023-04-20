@@ -1,0 +1,7 @@
+{
+	"default": {
+		"bg-color": "0xffffff",
+		"text-color": "0x000000",
+		"border-color": "0xdddddd",
+		"border-size": 0
+	}
