@@ -1,26 +1,15 @@
 #pragma once
 
-#include <SFML\Graphics.hpp>
-
-#pragma once
-
-#include <map>
-#include <memory>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-
-namespace std
-{
-	sf::Vector2f floor(sf::Vector2f);
-}
 
 namespace ui
 {
 	using Vector = sf::Vector2f;
 	using State = int;
 	using Format = int;
-
+	
 	enum States
 	{
 		none = 0,

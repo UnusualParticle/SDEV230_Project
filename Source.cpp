@@ -8,8 +8,8 @@ int main()
 {
 	// put code here
 	std::cout << "\n== Hello World! ==\n";
-	//SFML_TEST();
-	//ui::TEST_UI::RunTest();
+	SFML_TEST();
+	ui::TEST_UI::RunTest();
 	ui::TEST_MENU::RunTest();
 	return 0;
 }

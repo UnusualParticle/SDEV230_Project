@@ -4,13 +4,13 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
-sf::Vector2f std::floor(sf::Vector2f v)
-{
-	return { std::floor(v.x), std::floor(v.y) };
-}
-
 namespace ui
 {
+	Vector floor(Vector v)
+	{
+		return { std::floor(v.x), std::floor(v.y) };
+	}
+
 	namespace Settings
 	{
 		void updateMouse(const sf::Window& window)
