@@ -4,30 +4,19 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
-sf::Vector2f std::floor(sf::Vector2f v)
-{
-	return { std::floor(v.x), std::floor(v.y) };
-}
-
 namespace ui
 {
+	Vector floor(Vector v)
+	{
+		return { std::floor(v.x), std::floor(v.y) };
+	}
+
 	namespace Settings
 	{
 		void updateMouse(const sf::Window& window)
 		{
 			prevMousePos = curMousePos;
 			curMousePos = Vector{ sf::Mouse::getPosition(window) };
-		}
-		void addStyle(const ElementStyle& style, const std::string_view& stylename)
-		{
-			Styles.emplace( stylename, style);
-		}
-		const ElementStyle& getStyle(const std::string_view& stylename)
-		{
-			auto pair{ Styles.find(stylename.data()) };
-			if (pair == Styles.end())
-				return style;
-			return pair->second;
 		}
 	}
 

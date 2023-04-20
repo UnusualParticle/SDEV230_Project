@@ -1,26 +1,15 @@
 #pragma once
 
-#include <SFML\Graphics.hpp>
-
-#pragma once
-
-#include <map>
-#include <memory>
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
-
-namespace std
-{
-	sf::Vector2f floor(sf::Vector2f);
-}
 
 namespace ui
 {
 	using Vector = sf::Vector2f;
 	using State = int;
 	using Format = int;
-
+	
 	enum States
 	{
 		none = 0,
@@ -76,10 +65,6 @@ namespace ui
 		inline Vector windowSize{};
 
 		void updateMouse(const sf::Window&);
-
-		inline std::map<std::string, ElementStyle> Styles;
-		void addStyle(const ElementStyle& style, const std::string_view& stylename);
-		const ElementStyle& getStyle(const std::string_view&);
 	}
 
 	class Element_Base : public sf::Drawable

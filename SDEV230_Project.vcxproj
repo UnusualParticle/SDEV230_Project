@@ -146,29 +146,34 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="README.md" />
-    <None Include="SFML\SFML.md" />
+    <None Include="UI\SFML.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="SFML\StyleLoaders.cpp" />
-    <ClCompile Include="SFML\UI_Menu.cpp" />
-    <ClCompile Include="SFML\UserInterface.cpp" />
-    <ClCompile Include="SFML\SFML_test.cpp" />
+    <ClCompile Include="UI\Styles.cpp" />
+    <ClCompile Include="UI\UI_Menu.cpp" />
+    <ClCompile Include="UI\UserInterface.cpp" />
+    <ClCompile Include="UI\SFML_test.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="SFML\StyleLoaders.h" />
-    <ClInclude Include="SFML\UI_Menu.h" />
-    <ClInclude Include="SFML\UserInterface.h" />
-    <ClInclude Include="SFML\SFML_test.h" />
+    <ClInclude Include="UI\Styles.h" />
+    <ClInclude Include="UI\UI_Menu.h" />
+    <ClInclude Include="UI\UserInterface.h" />
+    <ClInclude Include="UI\SFML_test.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Data\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\style_product.json" />
-    <Text Include="Data\style_menu.json" />
+    <Text Include="Data\style_background.json" />
+    <Text Include="Data\style_button.json" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties Data_4style_3background_1json__JsonSchema="https://gitpod.io/schemas/gitpod-schema.json" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>
