@@ -76,10 +76,6 @@ namespace ui
 		inline Vector windowSize{};
 
 		void updateMouse(const sf::Window&);
-
-		inline std::map<std::string, ElementStyle> Styles;
-		void addStyle(const ElementStyle& style, const std::string_view& stylename);
-		const ElementStyle& getStyle(const std::string_view&);
 	}
 
 	class Element_Base : public sf::Drawable

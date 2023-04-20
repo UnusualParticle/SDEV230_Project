@@ -18,17 +18,6 @@ namespace ui
 			prevMousePos = curMousePos;
 			curMousePos = Vector{ sf::Mouse::getPosition(window) };
 		}
-		void addStyle(const ElementStyle& style, const std::string_view& stylename)
-		{
-			Styles.emplace( stylename, style);
-		}
-		const ElementStyle& getStyle(const std::string_view& stylename)
-		{
-			auto pair{ Styles.find(stylename.data()) };
-			if (pair == Styles.end())
-				return style;
-			return pair->second;
-		}
 	}
 
 	ElementStyle::ElementStyle() {};
