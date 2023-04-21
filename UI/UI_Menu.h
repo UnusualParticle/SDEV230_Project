@@ -5,30 +5,37 @@
 
 namespace ui
 {
-	class Product : public Element_Base
+	class MenuItem : public Element_Base
 	{
 	private:
 		Element m_item{ {},{} };
 		Element m_add{ {},{} };
 		Element m_remove{ {},{} };
+		Element m_count{ {},{} };
+
+		bool m_isProduct{};
 	public:
-		Product() = default;
-		~Product() = default;
+		MenuItem() = delete;
+		MenuItem(bool isProduct = false);
+		~MenuItem() = default;
 
 		void draw(sf::RenderTarget&, sf::RenderStates) const;
 		void pollEvent(const sf::Event&);
-		void SetStyles(const ElementStyle* itemStyle, const ElementStyle* addStyle, const ElementStyle* removeStyle);
 
+		bool ItemClicked() const;
 		bool AddClicked() const;
 		bool RemoveClicked() const;
+
 		void setSize(Vector = {});
 		Vector getSize() const;
 		void setPosition(Vector);
 		Vector getPosition() const;
 		void setName(const char*);
+		void setCount(int);
+		void SetStyles(const ElementStyle* itemStyle, const ElementStyle* addStyle, const ElementStyle* removeStyle, const ElementStyle* countStyle);
 	};
 
-	using ProdList_t = std::vector<Product>;
+	using MenuList_t = std::vector<MenuItem>;
 
 	class Menu : public Element_Base
 	{
@@ -36,7 +43,7 @@ namespace ui
 		Element m_background{ {},{} };
 		Element m_title{ {},{} };
 		Element m_back{ {},{} };
-		ProdList_t m_items{};
+		MenuList_t m_items{};
 	public:
 		Menu() = default;
 		~Menu() = default;
@@ -45,10 +52,13 @@ namespace ui
 		void pollEvent(const sf::Event&);
 		void SetStyles(const ElementStyle* backgroundStyle, const ElementStyle* titleStyle, const ElementStyle* backStyle);
 
-		ProdList_t::const_iterator begin() const;
-		ProdList_t::const_iterator end() const;
+		MenuList_t::const_iterator begin() const;
+		MenuList_t::const_iterator end() const;
+		size_t size() const;
+		MenuItem& operator[](size_t);
+		const MenuItem& operator[](size_t) const;
 
-		void AddProduct(const Product&);
+		void AddItem(const MenuItem&);
 		bool BackClicked() const;
 
 		void Resize();
