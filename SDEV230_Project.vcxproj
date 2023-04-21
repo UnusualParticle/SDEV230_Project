@@ -156,6 +156,7 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Data\MenuManager.h" />
     <ClInclude Include="UI\Styles.h" />
     <ClInclude Include="UI\UI_Menu.h" />
     <ClInclude Include="UI\UserInterface.h" />

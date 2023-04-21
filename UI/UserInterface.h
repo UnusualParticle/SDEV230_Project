@@ -36,12 +36,12 @@ namespace ui
 
 	struct StateStyle
 	{
-		sf::Color fillColor{ sf::Color::Black };
-		sf::Color outlineColor{ sf::Color::White };
-		float outlineThickness{ -1.f };
-		sf::Color textColor{ sf::Color::White };
-		unsigned int characterSize{ 30 };
-		Vector padding{ 5.f,5.f };
+		sf::Color fillColor{ sf::Color::Black };	// default: Black
+		sf::Color outlineColor{ sf::Color::White };	// default: White
+		float outlineThickness{ -1.f };				// default: -1
+		sf::Color textColor{ sf::Color::White };	// default: White
+		unsigned int characterSize{ 30 };			// default: 30
+		Vector padding{ 5.f,5.f };					// default: 5, 5
 	};
 	struct ElementStyle
 	{
