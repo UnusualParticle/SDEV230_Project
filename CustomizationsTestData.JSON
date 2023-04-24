@@ -1,0 +1,30 @@
+{
+    "ingredients": {
+      "Cheese": {
+        "Normal": 0,
+        "Light": 0,
+        "Extra": 1.49
+      },
+      "Meat": {
+        "Sausage": 1.49,
+        "Pepperoni": 1.49,
+        "Canadian Bacon": 1.49,
+        "Chicken": 1.49
+      },
+      "Veggies": {
+        "Mushrooms": 1.49,
+        "Onions": 1.49,
+        "Olives": 1.49,
+        "Tomatoes": 1.49,
+        "Banana Peppers": 1.49,
+        "Pineapple": 1.49,
+        "Green Peppers": 1.49
+      },
+      "Crust": {
+        "Original": 0,
+        "Thin": 0,
+        "Deep Dish": 4.00
+      }
+    }
+  }
+  

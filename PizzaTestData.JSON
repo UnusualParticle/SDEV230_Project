@@ -1,0 +1,110 @@
+{
+    "pizzas": [
+      {
+        "name": "Cheese",
+        "sizes": [
+          {
+            "size": "Small",
+            "price": 12.48
+          },
+          {
+            "size": "Medium",
+            "price": 15.78
+          },
+          {
+            "size": "Large",
+            "price": 18.08
+          },
+          {
+            "size": "Extra Large",
+            "price": 21.38
+          }
+        ]
+      },
+      {
+        "name": "Pepperoni",
+        "sizes": [
+          {
+            "size": "Small",
+            "price": 12.48
+          },
+          {
+            "size": "Medium",
+            "price": 15.78
+          },
+          {
+            "size": "Large",
+            "price": 18.08
+          },
+          {
+            "size": "Extra Large",
+            "price": 21.38
+          }
+        ]
+      },
+      {
+        "name": "Sausage",
+        "sizes": [
+          {
+            "size": "Small",
+            "price": 12.48
+          },
+          {
+            "size": "Medium",
+            "price": 15.78
+          },
+          {
+            "size": "Large",
+            "price": 18.08
+          },
+          {
+            "size": "Extra Large",
+            "price": 21.38
+          }
+        ]
+      },
+      {
+        "name": "Supreme",
+        "sizes": [
+          {
+            "size": "Small",
+            "price": 14.99
+          },
+          {
+            "size": "Medium",
+            "price": 17.99
+          },
+          {
+            "size": "Large",
+            "price": 20.99
+          },
+          {
+            "size": "Extra Large",
+            "price": 23.99
+          }
+        ]
+      },
+      {
+        "name": "Hawaiian",
+        "sizes": [
+          {
+            "size": "Small",
+            "price": 14.99
+          },
+          {
+            "size": "Medium",
+            "price": 17.99
+          },
+          {
+            "size": "Large",
+            "price": 20.99
+          },
+          {
+            "size": "Extra Large",
+            "price": 23.99
+          }
+        ]
+      }
+    ]
+  }
+  

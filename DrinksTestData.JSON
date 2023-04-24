@@ -1,0 +1,44 @@
+{
+    "sodas": [
+      {
+        "name": "Coca Cola",
+        "sizes": [
+          {
+            "size": "2-Liter",
+            "price": 3.29
+          },
+          {
+            "size": "20-oz",
+            "price": 2.19
+          }
+        ]
+      },
+      {
+        "name": "Dr. Pepper",
+        "sizes": [
+          {
+            "size": "2-Liter",
+            "price": 3.29
+          },
+          {
+            "size": "20-oz",
+            "price": 2.19
+          }
+        ]
+      },
+      {
+        "name": "Root Beer",
+        "sizes": [
+          {
+            "size": "2-Liter",
+            "price": 3.29
+          },
+          {
+            "size": "20-oz",
+            "price": 2.19
+          }
+        ]
+      }
+    ]
+  }
+  
