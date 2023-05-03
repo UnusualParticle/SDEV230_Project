@@ -65,6 +65,7 @@ namespace ui
 		inline Vector windowSize{};
 
 		void updateMouse(const sf::Window&);
+		void updateWindow(sf::RenderWindow&, const sf::Event::SizeEvent&);
 	}
 
 	class Element_Base : public sf::Drawable

@@ -18,6 +18,12 @@ namespace ui
 			prevMousePos = curMousePos;
 			curMousePos = Vector{ sf::Mouse::getPosition(window) };
 		}
+		void updateWindow(sf::RenderWindow& window, const sf::Event::SizeEvent& _size)
+		{
+			sf::FloatRect _visible{0.0f,0.0f,(float)_size.width,(float)_size.height};
+			window.setView(sf::View{ _visible });
+			windowSize = Vector{ window.getSize() };
+		}
 	}
 
 	ElementStyle::ElementStyle() {};
