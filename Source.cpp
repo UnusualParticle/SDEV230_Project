@@ -150,7 +150,6 @@ int main()
 
 	dat::LoadProducts(products);
 	dat::LoadMenus(menus, products);
-
 	if (menus.size() == 0)
 	{
 		std::cout << "== ERR: NO MENUS LOADED ==";
