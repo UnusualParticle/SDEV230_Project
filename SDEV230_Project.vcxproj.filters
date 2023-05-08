@@ -19,6 +19,8 @@
       <Filter>Resource Files</Filter>
     </None>
     <None Include="UI\SFML.md" />
+    <None Include="Data\Orders\DrinksTest.json" />
+    <None Include="Data\pizzas.json" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -36,6 +38,12 @@
     <ClCompile Include="UI\Styles.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Data Storage\DrinkLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Data Storage\Storage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="UI\SFML_test.h">
@@ -50,7 +58,13 @@
     <ClInclude Include="UI\Styles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Data\MenuManager.h">
+    <ClInclude Include="Data Storage\DrinkLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data Storage\json.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Data Storage\Storage.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -60,5 +74,7 @@
   <ItemGroup>
     <Text Include="Data\style_background.json" />
     <Text Include="Data\style_button.json" />
+    <Text Include="Data\products.txt" />
+    <Text Include="Data\menus.json" />
   </ItemGroup>
 </Project>

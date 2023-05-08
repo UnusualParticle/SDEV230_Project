@@ -1,0 +1,20 @@
+{
+  "list": [
+    {
+      "name": "Cheese Pizza",
+      "price": 7.00
+    },
+    {
+      "name": "Pepperoni Pizza",
+      "price": 7.00
+    },
+    {
+      "name": "Meat Lovers Pizza",
+      "price": 9.00
+    },
+    {
+      "name": "Hawaiian Pizza",
+      "price": 7.00
+    }
+  ]
+}
