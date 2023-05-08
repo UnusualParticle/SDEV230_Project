@@ -14,8 +14,8 @@ namespace ui
 		Element m_count{ {},{} };
 
 		bool m_isProduct{};
-	public:
 		MenuItem() = delete;
+	public:
 		MenuItem(bool isProduct = false);
 		~MenuItem() = default;
 

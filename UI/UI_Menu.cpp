@@ -377,6 +377,11 @@ namespace ui
 						exit = true;
 					else if (mouseEvent)
 						mymenu.pollEvent(event);
+					else if (event.type == sf::Event::Resized)
+					{
+						Settings::updateWindow(window, event.size);
+						mymenu.Resize();
+					}
 
 					for (size_t i{}; i < mymenu.size(); ++i)
 					{
@@ -423,6 +428,11 @@ namespace ui
 						exit = true;
 					else if (mouseEvent)
 						mymenu.pollEvent(event);
+					else if (event.type == sf::Event::Resized)
+					{
+						Settings::updateWindow(window, event.size);
+						mymenu.Resize();
+					}
 
 					for (size_t i{}; i < mymenu.size(); ++i)
 					{
@@ -477,6 +487,11 @@ namespace ui
 						exit = true;
 					else if (mouseEvent)
 						mymenu.pollEvent(event);
+					else if (event.type == sf::Event::Resized)
+					{
+						Settings::updateWindow(window, event.size);
+						mymenu.Resize();
+					}
 
 					for (size_t i{}; i < mymenu.size(); ++i)
 					{
@@ -532,6 +547,11 @@ namespace ui
 						exit = true;
 					else if (mouseEvent)
 						mymenu.pollEvent(event);
+					else if (event.type == sf::Event::Resized)
+					{
+						Settings::updateWindow(window, event.size);
+						mymenu.Resize();
+					}
 
 					for (size_t i{}; i < mymenu.size(); ++i)
 					{
