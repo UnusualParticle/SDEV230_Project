@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Data\Orders\DrinksTest.json" />
+    <None Include="Data\pizzas.json" />
     <None Include="README.md" />
     <None Include="UI\SFML.md" />
   </ItemGroup>
@@ -171,6 +172,8 @@
     <Font Include="Data\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Data\menus.json" />
+    <Text Include="Data\products.txt" />
     <Text Include="Data\style_background.json" />
     <Text Include="Data\style_button.json" />
   </ItemGroup>

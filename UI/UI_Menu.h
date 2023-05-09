@@ -65,6 +65,15 @@ namespace ui
 		void SetTitle(const char*);
 	};
 
+
+	void windowSetup(sf::Window& window);
+	void initialize(sf::RenderWindow& window);
+	const ElementStyle& getstyle();
+	const ElementStyle& getcountstyle();
+	const ElementStyle& getmenustyle();
+	const ElementStyle& getaddstyle();
+	const ElementStyle& getremovestyle();
+
 	namespace TEST_MENU
 	{
 		void RunTest();

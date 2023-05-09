@@ -1,0 +1,25 @@
+{
+	"list": [
+		{
+			"title": "Pizzas",
+			"products": [
+				"Cheese Pizza",
+				"Pepperoni Pizza",
+				"Meat Lovers Pizza",
+				"Hawaiian Pizza"
+			],
+			"menus": [
+
+			]
+		},
+		{
+			"title": "Main",
+			"products": [
+				
+			],
+			"menus": [
+				"Pizzas"
+			]
+		}
+	]
+}

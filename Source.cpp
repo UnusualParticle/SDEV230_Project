@@ -8,14 +8,6 @@
 #include "Data Storage/DrinkLoader.h"
 #include "Data Storage/Storage.h"
 
-// Styles.cpp is not implimented yet
-void LoadStyles()
-{
-	using namespace style;
-	LoadStyle("button", "Data/style_button.json");
-	LoadStyle("background", "Data/style_background.json");
-}
-
 void TestDrinks()
 {
     // put code here
@@ -23,41 +15,51 @@ void TestDrinks()
     loader.LoadDrinks();
 }
 
-/* THIS IS TEMPORARY */
-const ui::ElementStyle & getmenustyle()
+void SetupMenu(ui::Menu& _ui, const dat::Menu* _dat, const dat::Cart& _cart)
 {
-	static ui::ElementStyle mystyle{};
-	static bool isSet{};
-	if (!isSet)
-	{
-		mystyle.regular.textColor = sf::Color::Red;
-		mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
-		mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
-	}
-
-	return mystyle;
-}
-
-void SetupMenu(ui::Menu& _ui, const dat::Menu& _dat, const dat::Cart& _cart)
-{
-	_ui.SetTitle(_dat.title.c_str());
-	_ui.SetStyles(&getmenustyle(), &getmenustyle(), &getmenustyle());
+	_ui.SetTitle(_dat->title.c_str());
+	_ui.SetStyles(&ui::getmenustyle(), &ui::getmenustyle(), &ui::getmenustyle());
 
 	ui::MenuItem prod{true};
 	ui::MenuItem menu{false};
-	for (const auto& p : _dat.products)
+	for (const auto& p : _dat->products)
 	{
 		std::ostringstream str{};
 		str << p->name << " $" << p->price;
 		prod.setName(str.str().c_str());
 		prod.setCount(_cart.getCount(p));
-		prod.SetStyles(&getmenustyle(), &getmenustyle(), &getmenustyle(), &getmenustyle());
+		prod.SetStyles(&ui::getstyle(), &ui::getaddstyle(), &ui::getremovestyle(), &ui::getcountstyle());
 		_ui.AddItem(prod);
 	}
-	for (const auto& m : _dat.menus)
+	for (const auto& m : _dat->menus)
 	{
 		menu.setName(m->title.c_str());
-		menu.SetStyles(&getmenustyle(), &getmenustyle(), &getmenustyle(), &getmenustyle());
+		menu.SetStyles(&ui::getstyle(), &ui::getmenustyle(), &ui::getmenustyle(), &ui::getmenustyle());
+		_ui.AddItem(menu);
+	}
+
+	_ui.Resize();
+}
+void SetupCart(ui::Menu& _ui, const dat::Menu* _dat, const dat::Cart& _cart)
+{
+	_ui.SetTitle("Cart");
+	_ui.SetStyles(&ui::getmenustyle(), &ui::getmenustyle(), &ui::getmenustyle());
+
+	ui::MenuItem prod{ true };
+	ui::MenuItem menu{ false };
+	for (const auto& p : _cart.getItems())
+	{
+		std::ostringstream str{};
+		str << p.first->name << " $" << p.first->price;
+		prod.setName(str.str().c_str());
+		prod.setCount(p.second);
+		prod.SetStyles(&ui::getstyle(), &ui::getaddstyle(), &ui::getremovestyle(), &ui::getcountstyle());
+		_ui.AddItem(prod);
+	}
+	for (const auto& m : _dat->menus)
+	{
+		menu.setName(m->title.c_str());
+		menu.SetStyles(&ui::getstyle(), &ui::getmenustyle(), &ui::getmenustyle(), &ui::getmenustyle());
 		_ui.AddItem(menu);
 	}
 
@@ -65,16 +67,21 @@ void SetupMenu(ui::Menu& _ui, const dat::Menu& _dat, const dat::Cart& _cart)
 }
 struct MenuReturn_t
 {
-	dat::Product* product{};
+	const dat::Product* product{};
 	int prodCount{};
 	const dat::Menu* menu{};
 };
-MenuReturn_t RunMenu(sf::RenderWindow& window, const dat::Menu* _data, dat::Cart& cart)
+MenuReturn_t RunMenu(sf::RenderWindow& window, const dat::Menu* _data, const dat::Cart& cart)
 {
+	bool _iscart{ _data->title == "Cart" };
+
 	ui::Menu menu{};
-	SetupMenu(menu, *_data, cart);
-	size_t prodLimit{ _data->products.size() };
-	size_t menuLimit{ prodLimit + _data->menus.size() };
+	if (_iscart)
+		SetupCart(menu, _data, cart);
+	else
+		SetupMenu(menu, _data, cart);
+	size_t prodLimit{ menu.size() - _data->menus.size()};
+	size_t menuLimit{ menu.size() };
 
 	bool exit{};
 	while (window.isOpen() && !exit)
@@ -84,7 +91,7 @@ MenuReturn_t RunMenu(sf::RenderWindow& window, const dat::Menu* _data, dat::Cart
 		{
 			bool mouseEvent{ isMouseEvent(window, event) };
 			if (event.type == sf::Event::Closed)
-				window.close();
+				return {};
 			else if (onEscapePress())
 				exit = true;
 			else if (mouseEvent)
@@ -99,10 +106,16 @@ MenuReturn_t RunMenu(sf::RenderWindow& window, const dat::Menu* _data, dat::Cart
 			{
 				for (size_t i{}; i < prodLimit; ++i)
 				{
+					const dat::Product* _p{};
+					if (_iscart)
+						_p = cart.getItems()[i].first;
+					else
+						_p = _data->products[i];
+
 					if (menu[i].AddClicked())
-						return { _data->products[i], 1, _data };
+						return { _p, 1, _data };
 					else if (menu[i].RemoveClicked())
-						return { _data->products[i], -1, _data };
+						return { _p, -1, _data };
 				}
 				for (size_t i{ prodLimit }; i < menuLimit; ++i)
 				{
@@ -131,10 +144,12 @@ int main()
 
 	sf::RenderWindow window{};
 
-	std::vector<dat::Menu> menus{};
-	std::vector<dat::Product> products{};
+	dat::v_prod products{};
+	dat::v_menu menus{};
 	dat::Cart cart{};
 
+	dat::LoadProducts(products);
+	dat::LoadMenus(menus, products);
 	if (menus.size() == 0)
 	{
 		std::cout << "== ERR: NO MENUS LOADED ==";
@@ -148,7 +163,7 @@ int main()
 		if (nextmenu.prodCount != 0)
 			cart.editItem(nextmenu.product, nextmenu.prodCount);
 	}
-
+	window.close();
 
 	return 0;
 }

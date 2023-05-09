@@ -169,116 +169,118 @@ namespace ui
 		m_title.setString(str);
 	}
 
+
+	void windowSetup(sf::Window& window)
+	{
+		unsigned int width{ 1280 };
+		unsigned int height{ 720 };
+		std::string title{ "Menu Elements work!" };
+
+		window.create({ width, height }, title);
+		ui::Settings::windowSize = sf::Vector2f(window.getSize());
+	}
+	void initialize(sf::RenderWindow& window)
+	{
+		ui::Settings::font.loadFromFile("data/arial.ttf");
+
+		auto& w{ ui::Settings::windowSize };
+		ui::Element loading{ {0,0},{w.x / 4,w.y / 4},"Loading..." };
+		window.clear();
+		window.draw(loading);
+	}
+	const ElementStyle& getstyle()
+	{
+		static ElementStyle mystyle{};
+		static bool isSet{};
+		if (!isSet)
+		{
+			mystyle.regular.textColor = sf::Color::Black;
+			mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
+			mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
+
+			mystyle.hover.textColor = sf::Color::Black;
+			mystyle.hover.fillColor = sf::Color{ 0xe5e5e5ff };
+			mystyle.hover.outlineColor = sf::Color{ 0xe5e5e5ff };
+
+			mystyle.click.textColor = sf::Color::Black;
+			mystyle.click.fillColor = sf::Color{ 0xefc2c2ff };
+			mystyle.click.outlineColor = sf::Color{ 0xe5e5e5ff };
+		}
+
+		return mystyle;
+	}
+	const ElementStyle& getcountstyle()
+	{
+		static ElementStyle mystyle{};
+		static bool isSet{};
+		if (!isSet)
+		{
+			mystyle.regular.textColor = sf::Color::Black;
+			mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
+			mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
+			mystyle.regular.characterSize = 20;
+		}
+
+		return mystyle;
+	}
+	const ElementStyle& getmenustyle()
+	{
+		static ElementStyle mystyle{};
+		static bool isSet{};
+		if (!isSet)
+		{
+			mystyle.regular.textColor = sf::Color::Red;
+			mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
+			mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
+		}
+
+		return mystyle;
+	}
+	const ElementStyle& getaddstyle()
+	{
+		static ElementStyle mystyle{};
+		static bool isSet{};
+		if (!isSet)
+		{
+			mystyle.regular.textColor = sf::Color::Black;
+			mystyle.regular.fillColor = sf::Color{ 0x40f43dff };
+			mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
+
+			mystyle.hover.textColor = sf::Color::Black;
+			mystyle.hover.fillColor = sf::Color{ 0x76f774ff };
+			mystyle.hover.outlineColor = sf::Color{ 0xe5e5e5ff };
+
+			mystyle.click.textColor = sf::Color::Black;
+			mystyle.click.fillColor = sf::Color{ 0x4cc94ff };
+			mystyle.click.outlineColor = sf::Color{ 0xe5e5e5ff };
+		}
+
+		return mystyle;
+	}
+	const ElementStyle& getremovestyle()
+	{
+		static ElementStyle mystyle{};
+		static bool isSet{};
+		if (!isSet)
+		{
+			mystyle.regular.textColor = sf::Color::Black;
+			mystyle.regular.fillColor = sf::Color{ 0xe84747ff };
+			mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
+
+			mystyle.hover.textColor = sf::Color::Black;
+			mystyle.hover.fillColor = sf::Color{ 0xe87a7aff };
+			mystyle.hover.outlineColor = sf::Color{ 0xe5e5e5ff };
+
+			mystyle.click.textColor = sf::Color::Black;
+			mystyle.click.fillColor = sf::Color{ 0xc64d4dff };
+			mystyle.click.outlineColor = sf::Color{ 0xe5e5e5ff };
+		}
+
+		return mystyle;
+	}
+
 	namespace TEST_MENU
 	{
-		void windowSetup(sf::Window& window)
-		{
-			unsigned int width{ 1280 };
-			unsigned int height{ 720 };
-			std::string title{ "Menu Elements work!" };
-
-			window.create({ width, height }, title);
-			ui::Settings::windowSize = sf::Vector2f(window.getSize());
-		}
-		void initialize(sf::RenderWindow& window)
-		{
-			ui::Settings::font.loadFromFile("data/arial.ttf");
-
-			auto& w{ ui::Settings::windowSize };
-			ui::Element loading{ {0,0},{w.x / 4,w.y / 4},"Loading..." };
-			window.clear();
-			window.draw(loading);
-		}
-		const ElementStyle& getstyle()
-		{
-			static ElementStyle mystyle{};
-			static bool isSet{};
-			if (!isSet)
-			{
-				mystyle.regular.textColor = sf::Color::Black;
-				mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
-				mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
-
-				mystyle.hover.textColor = sf::Color::Black;
-				mystyle.hover.fillColor = sf::Color{ 0xe5e5e5ff };
-				mystyle.hover.outlineColor = sf::Color{ 0xe5e5e5ff };
-
-				mystyle.click.textColor = sf::Color::Black;
-				mystyle.click.fillColor = sf::Color{ 0xefc2c2ff };
-				mystyle.click.outlineColor = sf::Color{ 0xe5e5e5ff };
-			}
-
-			return mystyle;
-		}
-		const ElementStyle& getcountstyle()
-		{
-			static ElementStyle mystyle{};
-			static bool isSet{};
-			if (!isSet)
-			{
-				mystyle.regular.textColor = sf::Color::Black;
-				mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
-				mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
-				mystyle.regular.characterSize = 20;
-			}
-
-			return mystyle;
-		}
-		const ElementStyle& getmenustyle()
-		{
-			static ElementStyle mystyle{};
-			static bool isSet{};
-			if (!isSet)
-			{
-				mystyle.regular.textColor = sf::Color::Red;
-				mystyle.regular.fillColor = sf::Color{ 0xb7b7b7ff };
-				mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
-			}
-
-			return mystyle;
-		}
-		const ElementStyle& getaddstyle()
-		{
-			static ElementStyle mystyle{};
-			static bool isSet{};
-			if (!isSet)
-			{
-				mystyle.regular.textColor = sf::Color::Black;
-				mystyle.regular.fillColor = sf::Color{ 0x40f43dff };
-				mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
-
-				mystyle.hover.textColor = sf::Color::Black;
-				mystyle.hover.fillColor = sf::Color{ 0x76f774ff };
-				mystyle.hover.outlineColor = sf::Color{ 0xe5e5e5ff };
-
-				mystyle.click.textColor = sf::Color::Black;
-				mystyle.click.fillColor = sf::Color{ 0x4cc94ff };
-				mystyle.click.outlineColor = sf::Color{ 0xe5e5e5ff };
-			}
-
-			return mystyle;
-		}
-		const ElementStyle& getremovestyle()
-		{
-			static ElementStyle mystyle{};
-			static bool isSet{};
-			if (!isSet)
-			{
-				mystyle.regular.textColor = sf::Color::Black;
-				mystyle.regular.fillColor = sf::Color{ 0xe84747ff };
-				mystyle.regular.outlineColor = sf::Color{ 0xe5e5e5ff };
-
-				mystyle.hover.textColor = sf::Color::Black;
-				mystyle.hover.fillColor = sf::Color{ 0xe87a7aff };
-				mystyle.hover.outlineColor = sf::Color{ 0xe5e5e5ff };
-
-				mystyle.click.textColor = sf::Color::Black;
-				mystyle.click.fillColor = sf::Color{ 0xc64d4dff };
-				mystyle.click.outlineColor = sf::Color{ 0xe5e5e5ff };
-			}
-
-			return mystyle;
-		}
 
 		enum class MOpt_t
 		{
