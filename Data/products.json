@@ -15,6 +15,22 @@
     {
       "name": "Hawaiian Pizza",
       "price": 7.00
+    },
+    {
+      "name": "Coke",
+      "price": 1.00
+    },
+    {
+      "name": "Sprite",
+      "price": 1.00
+    },
+    {
+      "name": "Dr. Pepper",
+      "price": 1.00
+    },
+    {
+      "name": "Root Beer",
+      "price": 1.00
     }
   ]
 }
