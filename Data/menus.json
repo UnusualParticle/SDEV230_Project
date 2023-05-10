@@ -13,12 +13,34 @@
 			]
 		},
 		{
+			"title": "Drinks",
+			"products": [
+				"Coke",
+				"Sprite",
+				"Dr. Pepper",
+				"Root Beer"
+			],
+			"menus": [
+
+			]
+		},
+		{
+			"title": "Cart",
+			"products": [
+			],
+			"menus": [
+
+			]
+		},
+		{
 			"title": "Main",
 			"products": [
 				
 			],
 			"menus": [
-				"Pizzas"
+				"Pizzas",
+				"Drinks",
+				"Cart"
 			]
 		}
 	]

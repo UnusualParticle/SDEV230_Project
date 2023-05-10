@@ -2,6 +2,7 @@
 #include "json.h"
 #include <algorithm>
 #include <fstream>
+#include <memory>
 
 namespace dat
 {
@@ -44,20 +45,13 @@ namespace dat
 
 	using json = nlohmann::json;
 
-	/*== products.txt ==
-	* prod_pizzas.json
-	* prod_sides.json
-	* prod_drinks.json
-	* prod_desserts.json
-	*/
-
-	Product* FindProduct(v_prod& _prods, std::string_view _str)
+	const Product* FindProduct(const v_prod& _prods, std::string_view _str)
 	{
 		auto ptr{ std::find_if(_prods.begin(), _prods.end(), [&](const Product& p) { return p.name == _str; }) };
 		if (ptr == _prods.end())
 			return nullptr;
 
-		return ptr._Ptr;
+        return std::addressof(*ptr);
 	}
 	Menu* FindMenu(v_menu& _menus, std::string_view _str)
 	{
@@ -65,45 +59,61 @@ namespace dat
 		if (ptr == _menus.end())
 			return nullptr;
 
-		return ptr._Ptr;
+		return std::addressof(*ptr);
 	}
 	size_t LoadProducts(v_prod& _prods)
 	{
-		// you don't have to do it like this
-		// I just don't like big files lol
+		// I'm just doing one file since they wont be "that" big
 
-		std::ifstream file{ "products.txt" };
-		std::string str{};
-		std::getline(file, str);
+		std::ifstream file{ "Data/products.json" };
 
-		while (file && str.size())
-		{
-			std::ifstream j_file{ str };
-			json j_obj{};
-			j_file >> j_obj;
-			j_file.close();
+        json data = json::parse(file);
 
-			// bla bla
+        json productsList = data["list"];
 
-			std::getline(file, str);
-		}
-		
-		file.close();
+        for (auto& product : productsList)
+        {
+            Product prod{};
+            prod.name = product["name"];
+            prod.price = product["price"];
+            _prods.push_back(prod);
+        }
+
+        file.close();
+
 		return _prods.size();
 	}
 	size_t LoadMenus(v_menu& _menus, const v_prod& _prods)
 	{
-		// you don't have to do it like this
-		// I just don't like big files lol
+        std::ifstream file{ "Data/menus.json" };
 
-		std::ifstream file{ "menus.txt" };
-		json j_obj{};
-		file >> j_obj;
-		file.close();
+        json data = json::parse(file);
 
-		// I'd recommend getting all the menu titles first,
-		// then going through and getting the products and menus in each menu
-		// that way the order the menus are listed in the file doesn't matter
+        json menusList = data["list"];
+
+        for (auto& menuJson : menusList)
+        {
+            Menu menu{};
+
+            menu.title = menuJson["title"];
+
+            for (auto& product : menuJson["products"])
+            {
+                std::string productString = product;
+                const Product* prod = FindProduct(_prods, productString);
+                menu.products.push_back(prod);
+            }
+
+            for (auto& subMenu : menuJson["menus"])
+            {
+                std::string subMenuString = subMenu;
+                Menu* menuPtr = FindMenu(_menus, subMenuString);
+                menu.menus.push_back(menuPtr);
+            }
+            _menus.push_back(menu);
+        }
+
+        file.close();
 		
 		return _prods.size();
 	}
