@@ -1,6 +1,19 @@
 {
 	"list": [
 		{
+			"title": "Main",
+			"products": [
+
+			],
+			"menus": [
+				"Pizzas",
+				"Sides",
+				"Drinks",
+				"Desserts",
+				"Cart"
+			]
+		},
+		{
 			"title": "Pizzas",
 			"products": [
 				"Cheese Pizza",
@@ -9,7 +22,7 @@
 				"Hawaiian Pizza"
 			],
 			"menus": [
-
+				"Main"
 			]
 		},
 		{
@@ -21,7 +34,31 @@
 				"Root Beer"
 			],
 			"menus": [
-
+				"Main"
+			]
+		},
+		{
+			"title": "Sides",
+			"products": [
+				"Breadsticks",
+				"Cheesesticks",
+				"Wings",
+				"Pasta"
+			],
+			"menus": [
+				"Main"
+			]
+		},
+		{
+			"title": "Desserts",
+			"products": [
+				"Brownies",
+				"Blondies",
+				"Cookies",
+				"Cinnamon Sticks"
+			],
+			"menus": [
+				"Main"
 			]
 		},
 		{
@@ -29,18 +66,15 @@
 			"products": [
 			],
 			"menus": [
-
+				"Main",
+				"Checkout"
 			]
 		},
 		{
-			"title": "Main",
+			"title": "Checkout",
 			"products": [
-				
 			],
 			"menus": [
-				"Pizzas",
-				"Drinks",
-				"Cart"
 			]
 		}
 	]

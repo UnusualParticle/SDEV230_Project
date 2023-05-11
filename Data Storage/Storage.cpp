@@ -35,9 +35,9 @@ namespace dat
 		else if (count > 0)
 			m_items.push_back({ prod, count });
 	}
-	int Cart::getTotal() const
+	double Cart::getTotal() const
 	{
-		int total{};
+		double total{};
 		for (auto& i : m_items)
 			total += (i.first->price * i.second);
 		return total;
@@ -101,20 +101,28 @@ namespace dat
             {
                 std::string productString = product;
                 const Product* prod = FindProduct(_prods, productString);
+				assert(prod);
                 menu.products.push_back(prod);
             }
 
-            for (auto& subMenu : menuJson["menus"])
-            {
-                std::string subMenuString = subMenu;
-                Menu* menuPtr = FindMenu(_menus, subMenuString);
-                menu.menus.push_back(menuPtr);
-            }
             _menus.push_back(menu);
         }
 
+		for (auto& menuJson : menusList)
+		{
+			Menu& menu{ *FindMenu(_menus, menuJson["title"]) };
+			
+			for (auto& subMenu : menuJson["menus"])
+			{
+				std::string subMenuString = subMenu;
+				Menu* menuPtr = FindMenu(_menus, subMenuString);
+				assert(menuPtr);
+				menu.menus.push_back(menuPtr);
+			}
+		}
+
         file.close();
 		
-		return _prods.size();
+		return _menus.size();
 	}
 }

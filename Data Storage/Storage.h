@@ -8,7 +8,7 @@ namespace dat
 	struct Product
 	{
 		std::string name{};
-		int price{};
+		double price{};
 	};
 	using CartItem = std::pair<const Product*, int>;
 	class Cart
@@ -22,7 +22,7 @@ namespace dat
 		const std::vector<CartItem>& getItems() const;
 		int getCount(const Product* prod) const;
 		void editItem(const Product* prod, int count);
-		int getTotal() const;
+		double getTotal() const;
 	};
 	struct Menu
 	{
