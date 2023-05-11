@@ -42,3 +42,8 @@ If you're using something other than VS, I'll assume you know what your doing. I
   + Merge the branch back up and delete the branch
 + Documentation!
   + Fill out your commit and pull comments
+
+## External Sources (Credits)
+
++ json library: https://github.com/nlohmann/json
++ SFML library: https://www.sfml-dev.org/

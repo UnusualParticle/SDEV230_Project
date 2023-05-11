@@ -3,6 +3,14 @@
 #include "UserInterface.h"
 #include <vector>
 
+/*
+* contains the following classes:
+*	MenuItem
+*	Menu
+* 
+* very basic UI elements for a generic cart menu system
+*/
+
 namespace ui
 {
 	class MenuItem : public Element_Base

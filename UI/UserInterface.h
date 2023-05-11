@@ -4,6 +4,14 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 
+/*
+* contains the following classes:
+*	Element_Base
+*	Element
+* 
+* basic GUI implimentation of SFML
+*/
+
 namespace ui
 {
 	using Vector = sf::Vector2f;
