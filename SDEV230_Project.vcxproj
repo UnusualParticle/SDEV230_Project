@@ -146,7 +146,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <None Include="Data\MANUAL.md" />
-    <None Include="Data\Orders\DrinksTest.json" />
     <None Include="Data\products.json" />
     <None Include="README.md" />
     <None Include="UI\SFML.md" />
@@ -155,7 +154,6 @@
     <ClCompile Include="Data Storage\Storage.cpp" />
     <ClCompile Include="UI\UI_Menu.cpp" />
     <ClCompile Include="UI\UserInterface.cpp" />
-    <ClCompile Include="UI\SFML_test.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -163,7 +161,6 @@
     <ClInclude Include="Data Storage\Storage.h" />
     <ClInclude Include="UI\UI_Menu.h" />
     <ClInclude Include="UI\UserInterface.h" />
-    <ClInclude Include="UI\SFML_test.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Data\arial.ttf" />

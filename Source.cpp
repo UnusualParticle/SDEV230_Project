@@ -2,7 +2,6 @@
 #include <iomanip>
 #include <sstream>
 
-#include "UI/SFML_test.h"
 #include "UI/UserInterface.h"
 #include "UI/UI_Menu.h"
 #include "Data Storage/Storage.h"
