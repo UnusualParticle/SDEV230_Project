@@ -66,7 +66,7 @@ namespace ui
 	};
 
 
-	void windowSetup(sf::Window& window);
+	void windowSetup(sf::Window& window, const std::string& str);
 	void initialize(sf::RenderWindow& window);
 	const ElementStyle& getstyle();
 	const ElementStyle& getcountstyle();

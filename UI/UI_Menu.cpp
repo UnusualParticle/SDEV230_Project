@@ -170,11 +170,11 @@ namespace ui
 	}
 
 
-	void windowSetup(sf::Window& window)
+	void windowSetup(sf::Window& window, const std::string& str)
 	{
 		unsigned int width{ 1280 };
 		unsigned int height{ 720 };
-		std::string title{ "Menu Elements work!" };
+		std::string title{ str };
 
 		window.create({ width, height }, title);
 		ui::Settings::windowSize = sf::Vector2f(window.getSize());
@@ -581,7 +581,7 @@ namespace ui
 		void RunTest()
 		{
 			sf::RenderWindow window;
-			windowSetup(window);
+			windowSetup(window, "testing");
 			initialize(window);
 
 			CartItem_t option{};

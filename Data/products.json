@@ -17,6 +17,22 @@
       "price": 7.00
     },
     {
+      "name": "Breadsticks",
+      "price": 4.00
+    },
+    {
+      "name": "Cheesesticks",
+      "price": 5.00
+    },
+    {
+      "name": "Wings",
+      "price": 7.00
+    },
+    {
+      "name": "Pasta",
+      "price": 7.00
+    },
+    {
       "name": "Coke",
       "price": 1.00
     },
@@ -31,6 +47,22 @@
     {
       "name": "Root Beer",
       "price": 1.00
+    },
+    {
+      "name": "Brownies",
+      "price": 4.50
+    },
+    {
+      "name": "Blondies",
+      "price": 4.50
+    },
+    {
+      "name": "Cookies",
+      "price": 4.00
+    },
+    {
+      "name": "Cinnamon Sticks",
+      "price": 6.00
     }
   ]
 }

@@ -20,7 +20,7 @@
     </None>
     <None Include="UI\SFML.md" />
     <None Include="Data\Orders\DrinksTest.json" />
-    <None Include="Data\pizzas.json" />
+    <None Include="Data\products.json" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -72,9 +72,6 @@
     <Font Include="Data\arial.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Data\style_background.json" />
-    <Text Include="Data\style_button.json" />
-    <Text Include="Data\products.txt" />
     <Text Include="Data\menus.json" />
   </ItemGroup>
 </Project>
