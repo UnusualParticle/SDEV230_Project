@@ -2,10 +2,8 @@
 #include <iomanip>
 #include <sstream>
 
-#include "UI/SFML_test.h"
 #include "UI/UserInterface.h"
 #include "UI/UI_Menu.h"
-#include "UI/Styles.h"
 #include "Data Storage/Storage.h"
 
 std::ostream& operator<<(std::ostream& out, const dat::Product& prod)

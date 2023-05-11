@@ -3,6 +3,14 @@
 #include <string>
 #include <vector>
 
+/*
+* contains the following classes:
+*	Cart
+* 
+* this file contains basic data structures for products, menus, and carts,
+* as well as functions to load the data from json files
+*/
+
 namespace dat
 {
 	struct Product

@@ -145,28 +145,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="Data\Orders\DrinksTest.json" />
+    <None Include="Data\MANUAL.md" />
     <None Include="Data\products.json" />
     <None Include="README.md" />
     <None Include="UI\SFML.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Data Storage\DrinkLoader.cpp" />
     <ClCompile Include="Data Storage\Storage.cpp" />
-    <ClCompile Include="UI\Styles.cpp" />
     <ClCompile Include="UI\UI_Menu.cpp" />
     <ClCompile Include="UI\UserInterface.cpp" />
-    <ClCompile Include="UI\SFML_test.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Data Storage\DrinkLoader.h" />
     <ClInclude Include="Data Storage\json.h" />
     <ClInclude Include="Data Storage\Storage.h" />
-    <ClInclude Include="UI\Styles.h" />
     <ClInclude Include="UI\UI_Menu.h" />
     <ClInclude Include="UI\UserInterface.h" />
-    <ClInclude Include="UI\SFML_test.h" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Data\arial.ttf" />
@@ -179,7 +173,7 @@
   </ImportGroup>
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties Data_4style_3background_1json__JsonSchema="https://gitpod.io/schemas/gitpod-schema.json" />
+      <UserProperties />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
